@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>Ebajar</title>
+
+<script>
+function OnclickValidation()
+{
+var x = document.form1.user.value;
+var patt1=/\s/g;
+var y = document.form1.pass.value;
+       var letters = /^[A-Za-z]+$/;
+var z=document.forms["form1"]["email"].value;
+var atpos=z.indexOf("@");
+var dotpos=z.lastIndexOf(".");
+var m = document.form1.phone_no.value;
+if(x.match(patt1)||x.length < 1)
+{ alert("you have something wrong in username!!!");return false;}
+if(y.match(letters)||y.length < 6)
+{ alert("you have something wrong in password!!!");return false;}
+if(atpos<1 || dotpos<atpos+2 || dotpos+2>=z.length)
+{ alert("you have something wrong in email!!!");return false;}
+if(isNaN(m)|| m.indexOf(" ")!=-1)
+{ alert("you have something wrong in mobilenumber!!!");return false;}
+
+}
+
+//User validation
+function UserValidate()
+{
+        var x = document.form1.user.value;
+var patt1=/\s/g;
+ if(x.match(patt1)){
+
+document.getElementById('errfn').innerHTML="this is invalid name";
+return false; }
+
+       
+      else if (x.length < 1){
+      
+document.getElementById('errfn').innerHTML="this is invalid name";
+return false;
+           }
+else {
+document.getElementById('errfn').innerHTML="ok";
+return true;}
+
+
+
+
+// For final confirmation
+
+
+
+}
+//Password
+function PasswordValidate()
+{
+        var y = document.form1.pass.value;
+       var letters = /^[A-Za-z]+$/;
+      if(y.match(letters)){
+            
+document.getElementById('errfn1').innerHTML="use number";return false; }
+       
+        if (y.length < 6){
+           
+document.getElementById('errfn1').innerHTML="use more than 6 words"; return false;
+           }
+else {
+document.getElementById('errfn1').innerHTML="ok";
+return true;}
+}
+
+
+
+function EmailValidate()
+{
+var x=document.forms["form1"]["email"].value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if(atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+ 
+document.getElementById('errfn2').innerHTML="invalid email";
+  return false;
+  }
+else{
+document.getElementById('errfn2').innerHTML="ok";
+return true;
+}
+}
+
+
+//Mobile Validation
+function MobileValidate()
+{
+        var x = document.form1.phone_no.value;
+        if(isNaN(x)|| x.indexOf(" ")!=-1){
+      
+document.getElementById('errfn3').innerHTML="invalid mobile number";return false; }
+      else if (x.length < 8){
+            
+document.getElementById('errfn3').innerHTML="invalid mobile number"; 
+return false;
+           }
+else {
+document.getElementById('errfn3').innerHTML="ok";
+return true;}
+}
+
+
+//Gender Validation
+function GenderValidate() {
+                var genders = document.getElementsByName("gender");
+                if (genders[0].checked == true) {
+                    return true;
+                } else if (genders[1].checked == true) {
+                    return true;
+                } else {
+                    // no checked
+                    alert("you must select your gender"); return false;
+                }
+                return true;
+            }
+
+</script>
+</head>
+<body>
+    <form name="form1" action="#" method="post">
+       
+User Name: <input name="user" type="text" onblur="UserValidate()" id="user" /><span id="errfn"></span><br />
+       
+Password: <input name="pass" type="password" onkeypress="PasswordValidate()" id="pass" /><span id="errfn1"></span><br />
+
+Email: <input type="text" onkeypress="EmailValidate()" name="email" id="email"><span id="errfn2"></span><br >
+
+Phone Number: <input name="phone_no" type="text" onkeypress="MobileValidate()" id="phone_no" /><span id="errfn3"></span><br />
+<br />
+ <label>Gender:</label>
+            <br />
+            <input type="radio" name="gender" value="m" onclick="reset_msg();" />Male
+            <br />
+            <input type="radio" name="gender" value="f" onclick="reset_msg();" />Female
+            <br />
+            <div id="msg"></div>
+            <//input type="submit" value="send" onclick="return GenderValidate();" />
+<select name=gender id=form1>
+<option>Select Gender</option>
+<option name="gender" value="m" onclick="reset_msg();">Male</option>
+<option name="gender" value="f" onclick="reset_msg();">Female</option>
+ <div id="msg"></div>
+</select>
+
+<input type="submit" name="Submit" value="Send" onclick="OnclickValidation();return GenderValidate()"/>
+   
+    </form>
+</body>
+</html>
+
+
+

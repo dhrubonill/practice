@@ -1,0 +1,38 @@
+<html>
+<head>
+<script>
+function validateFamily()
+{
+var family=document.getElementById('family');
+var stringf = document.getElementById('family').value;
+if (family.value=="")
+    {
+     alert("Family name must be filled out");
+    // return false;
+    }
+else if (document.getElementById('family').value.length > 35)
+    {
+        alert("Family name cannot be more than 35 characters");
+      //  return false;
+    }
+else if (/[^a-zA-Z\-\]/.test( stringf ))
+    {
+        alert("Family name can only contain alphanumeric characters and hypehns(-)")
+        return false;
+    }
+    return true;
+}
+</script>
+</head>
+<body>
+<form name="eoiform" method="POST" action="#" id="eoi" onsubmit="return validateFamily() && validateGiven() && validateMaleFemale() && validDate() && validateAddress() && validatePost() && validateParent() && validateWork() && validateHome() && validateMob() && validateCheckBoxes();">
+
+<b>Student's Family Name</b> 
+<br>
+<input type="text" id="family" name="family" />
+
+<input type="submit" name="submit" id="submit" value="submit" />
+
+</form>
+</body>
+</html>

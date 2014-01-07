@@ -1,0 +1,33 @@
+<html>
+<head>
+<title></title>
+
+<script>
+function UserValidate()
+{
+        var x = document.username.user.value;
+var patt1=/\s/g;
+ if(x.match(patt1)){
+              alert("dont use space");return false; }
+
+       
+        if (x.length < 1){
+                alert("you have not write anything"); return false;
+           }
+}
+
+</script>
+</head>
+<body>
+    <form name="username" action="#" method="post">
+        <p>Choose a unique one</p>
+       
+UserName: <input name="user" type="text" id="user" />
+<input type="submit" name="Submit" value="Go" onclick="return UserValidate()"/>
+         
+    </form>
+</body>
+</html>
+
+
+

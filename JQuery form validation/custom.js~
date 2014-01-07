@@ -1,0 +1,20 @@
+$(document).ready(function()
+{var form= $("#contact_form");
+var name= $("#name");
+var email= $("#email");
+var nameinfo= $("#nameinfo");
+var emailinfo= $("#emailinfo");
+
+form.submit(function(){
+if(validateName() & validateEmail())
+{
+return true;
+}
+else
+{return false;}
+});
+function validateName()
+{
+
+}
+});

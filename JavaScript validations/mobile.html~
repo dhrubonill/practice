@@ -1,0 +1,29 @@
+<html>
+<head>
+<title></title>
+
+<script>
+function MobileValidate()
+{
+        var x = document.mobileform.phone_no.value;
+        if(isNaN(x)|| x.indexOf(" ")!=-1){
+              alert("Enter numeric value");return false; }
+        if (x.length < 8){
+                alert("you need more number to insert"); return false;
+           }
+}
+
+</script>
+</head>
+<body>
+    <form name="mobileform" action="search_phone.jsp" method="post">
+        <p>Give me your mobile number </p>
+       
+ Phone Number: <input name="phone_no" type="text" id="phone_no" />
+<input type="submit" name="Submit" value="Go" onclick="return MobileValidate()"/>
+         
+    </form>
+</body>
+</html>
+
+

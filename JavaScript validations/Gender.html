@@ -1,0 +1,31 @@
+<html>
+    <head>
+     <title>Radio button:</title>
+        <script>
+            function GenderValidate() {
+                var genders = document.getElementsByName("gender");
+                if (genders[0].checked == true) {
+                    return true;
+                } else if (genders[1].checked == true) {
+                    return true;
+                } else {
+                    // no checked
+                    alert("you must select your gender"); return false;
+                }
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <form name="form1" action="" method="POST">
+            <label>Gender:</label>
+            <br />
+            <input type="radio" name="gender" value="m" onclick="reset_msg();" />Male
+            <br />
+            <input type="radio" name="gender" value="f" onclick="reset_msg();" />Female
+            <br />
+            <div id="msg"></div>
+            <input type="submit" value="send" onclick="return GenderValidate();" />
+        </form>
+    </body>
+</html>

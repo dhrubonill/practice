@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form validation</title>
+
+<script src="js/jquery-1.10.2.js"></script>
+<script src="jquery.validate.js"></script>
+<//script src="custom.js"><//script>
+
+<script type="text/javascript">
+//customize
+$.validator.addMethod("cmxform", function(value, element) {
+	return !this.optional(element);
+}, "Please select the gender");
+
+//My experimental edit
+
+$.validator.addMethod("regex1",function(value,element){
+                return this.optional(element) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/i.test(value);
+            },"At least one number and atleast 6 total letters.");
+
+$.validator.addMethod("noSpace", function(value, element) { 
+     return value.indexOf(" ") < 0 && value != ""; 
+  }, "Space are not allowed");
+/*
+$.validator.addMethod("space",function(value,element){
+                return this.optional(element) || /^\s+|\s+$/.test(value);
+            },"dont put the damn space!");*/
+
+//my experimental edit
+//customize
+
+$.validator.setDefaults({
+	submitHandler: function() { alert("submitted!"); resetField();}
+});
+function clearThis(target){
+        $(target).val = "";
+    }
+$().ready(function() {
+	// validate the comment form when it is submitted
+	$("#Form1").validate();
+//$("#Form1").rules("add", { regex: "^[a-zA-Z'.\\s]{1,40}$" })
+	// validate signup form on keyup and submit
+	$("#Form1").validate({
+		 	rules: {
+			username: {
+				required: true,
+				minlength: 4
+
+			},
+			password: {
+				required: true,
+				minlength: 6
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			mobile: {
+				required: true,
+				minlength: 8
+
+			}
+		
+		},
+		messages: {
+
+			username: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 4 characters"
+			},
+			password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+				
+			
+			
+			email: "Please enter a valid email address",
+			mobile: {
+				required: "Please provide your number",
+				minlength: "choose at least 8 numbers"
+
+			}
+		}
+			
+	});
+
+	// propose username by combining first- and lastname
+	
+
+});
+</script>
+</head>
+<body>
+
+<h1> Form validation using jquery</h1>
+<div id="main">
+<form class="cmxform" id="Form1" method="get" action="">
+	<fieldset>
+<legend>Registration Form</legend>
+		<p>
+			<label for="username">User Name: &nbsp&nbsp</label>
+			<input id="username" name="username" type="text" noSpace="true" placeholder="Enter your username"/>
+
+		</p>
+		<p>
+			<label for="password">Password: &nbsp&nbsp&nbsp&nbsp</label>
+			<input id="password" name="password" type="password" regex1="true" placeholder="Enter your password"/>
+		</p>
+			<p>
+			<label for="email">E-Mail: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+			<input id="email" type="email" name="email" placeholder="Enter your email"/>
+		</p>
+		<p>
+			<label for="curl">URL: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+			<input id="curl" type="url" name="url" placeholder="Enter your webpage"/>
+		</p>
+		<p>
+			<label for="mobile">mobile: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+			<input id="mobile" name="mobile" type="digits" placeholder="Enter your mobile"/>
+		</p>
+<select class='cmxform' name="item-type-{0}">
+<option value="">Select Gender</option>
+<option value="0">Male</option>
+<option value="1"">Female</option>
+</select>
+
+	
+
+			<input class="submit" type="submit" value="Submit"/>
+</fieldset>
+</form>
+</div>	
+
+
+
+</body>
+</html>

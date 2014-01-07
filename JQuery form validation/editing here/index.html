@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form validation</title>
+
+<script src="js/jquery-1.10.2.js"></script>
+<script src="jquery.validate.js"></script>
+
+
+<script type="text/javascript">
+//customize
+		
+//My experimental edit
+
+		
+
+								
+//my experimental edit
+//customize
+
+		$.validator.setDefaults({
+			submitHandler: function() { alert("submitted!"); resetField();}
+		});
+
+
+
+		$().ready(function() {
+
+			$.validator.addMethod("regex",function(value,element){
+							return this.optional(element) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/i.test(value);
+						    },"At least one number and atleast 6 total letters.");
+
+			$.validator.addMethod("noSpace", function(value, element) { 
+					return value.indexOf(" ") < 0 && value != ""; 
+								} );
+
+			// validate the comment form when it is submitted
+			$("#Form1").validate();
+
+			$("#Form1").validate({
+				 	rules: {
+					username: {
+						required: true,
+						minlength: 4,
+						noSpace:true
+
+					},
+					password: {
+						required: true,
+						minlength: 6
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					mobile: {
+						required: true,
+						minlength: 8
+
+					}
+		
+				},
+				messages: {
+
+					username: {
+						required: "Please enter a username",
+						minlength: "Your username must consist of at least 4 characters"
+					},
+					password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long"
+					},
+				
+			
+			
+					email: "Please enter a valid email address",
+					mobile: {
+						required: "Please provide your number",
+						minlength: "choose at least 8 numbers"
+
+					}
+				}
+			
+			});
+
+	$.validator.addMethod("gender", function(value, element){
+									return !this.optional(element);
+								}, "Please select the gender");
+	
+
+		});
+</script>
+</head>
+<body>
+
+<h1> Form validation using jquery</h1>
+<div id="main">
+<form class="cmxform" id="Form1" method="get" action="">
+	
+		<p>
+			<label for="username">User Name:   </label>
+			<input id="username" name="username" type="text"  placeholder="Enter your username"/>
+
+		</p>
+		<p>
+			<label for="password">Password:   </label>
+			<input id="password" name="password" type="password" regex="true" placeholder="Enter your password"/>
+		</p>
+			<p>
+			<label for="email">E-Mail: </label>
+			<input id="email" type="email" name="email" placeholder="Enter your email"/>
+		</p>
+		<p>
+			<label for="curl">URL (optional): </label>
+			<input id="curl" type="url" name="url" placeholder="Enter your webpage"/>
+		</p>
+		<p>
+			<label for="mobile">mobile:  </label>
+			<input id="mobile" name="mobile" type="digits" placeholder="Enter your mobile"/>
+		</p>
+<select gender="true" name="item-type-{0}">
+<option value="">Select Gender</option>
+<option value="0">Male</option>
+<option value="1"">Female</option>
+</select>
+
+	
+			<input class="cmxform" type="submit" value="Submit"/>
+</div>	
+</form>
+
+
+</body>
+</html>

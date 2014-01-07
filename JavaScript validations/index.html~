@@ -1,0 +1,51 @@
+<html>
+<head>
+ <h1>Form</h1>
+<script>
+function validateForm()
+{
+var x=document.text["email"].value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  alert("Not a valid e-mail address");
+  return false;
+  }
+else{
+ alert("Not a valid e-mail address");
+}
+}
+
+function phonenumber()  
+{  var x=document.forms["myForm"]["mobile"].value;
+  var phoneno = /^\d{10}$/;  
+  if((inputtxt.value.match(x))  
+        {  
+      return true;  
+        }  
+      else  
+        {  
+        alert("message");  
+        return false;  
+        }  
+}  
+}
+</script>
+</head>
+<body>
+User: <input type="text" name="user"><br>
+pass    : <input type="text" name="pass"><br />
+Email    : <input type="text" id= "email" name="email"><br />
+<button type="button" onclick="validateForm()" method="post">Check Email</button>
+mobile num:<input type="text" id="mobile" name="mobile">
+<button type="button" onclick="return phonenumber()">Check Number</button>
+<br />
+<br />
+Gender:
+<br />
+<br />
+<input type="radio" name="sex" value="male">Male<br>
+<input type="radio" name="sex" value="female">Female
+</body>
+</html>

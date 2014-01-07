@@ -1,0 +1,86 @@
+<html>
+<body>
+<table style="width: 600px; border: solid 1px silver; 
+color: #565656; line-height: 25px;">
+            <tr>
+                <td class="Header_style" 
+                colspan="2" align="center">
+                    Registration form
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                </td>
+                <td style="width: 400px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                    User name
+                </td>
+                <td style="width: 400px;">
+                    <asp:TextBox ID="TextBox1" 
+                    runat="server" class="required"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                    Email Id
+                </td>
+                <td style="width: 400px;">
+                    <asp:TextBox ID="TextBox2" runat="server" 
+                    class="required email"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                    Password
+                </td>
+                <td style="width: 400px;">
+                    <asp:TextBox ID="TextBox3" runat="server" 
+                    class="required password"  
+                    TextMode="Password"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                    Retype password
+                </td>
+                <td style="width: 400px;">
+                    <asp:TextBox ID="TextBox4" runat="
+                    server" class="password comfirm_password"  
+                    TextMode="Password"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                    Mobile Number
+                </td>
+                <td style="width: 400px;">
+                    <asp:TextBox ID="TextBox5" runat="server" 
+                    class="required mobile"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                </td>
+                <td style="width: 400px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">
+                </td>
+                <td style="width: 400px;">
+                    <asp:Button ID="Button1" class="
+                    button_style btn_validate" runat="server" 
+                    Text="Button" />
+                </td>
+            </tr>
+        </table>
+</body>
+</html>
